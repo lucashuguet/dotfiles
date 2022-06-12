@@ -25,6 +25,7 @@ dunst &
 run volumeicon &
 #run discord &
 nitrogen --restore &
+emacs --daemon &
 #run caffeine -a &
 #run vivaldi-stable &
 #run firefox &

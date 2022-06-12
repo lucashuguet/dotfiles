@@ -153,7 +153,9 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
 alias vim="nvim"
 
-
+set -Ux CARGO_HOME $HOME/.cargo
+set -Ux RUST_SRC_PATH /usr/local/src/rust/src
+set -U fish_user_paths $CARGO_HOME $fish_user_paths
 
 ## Run neofetch if session is interactive
 if status --is-interactive && type -q neofetch

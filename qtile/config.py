@@ -83,17 +83,17 @@ keys = [
     Key([mod, "shift"], "x", lazy.shutdown()),
 
 # CONTROL + ALT KEYS
-
     Key(["mod1", "control"], "o", lazy.spawn(home + '/.config/qtile/scripts/picom-toggle.sh')),
     Key(["mod1", "control"], "t", lazy.spawn('xterm')),
     Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
 
 # ALT + ... KEYS
-
     Key(["mod1"], "p", lazy.spawn('pamac-manager')),
     Key(["mod1"], "f", lazy.spawn('firefox')),
     Key(["mod1"], "m", lazy.spawn('pcmanfm')),
     Key(["mod1"], "w", lazy.spawn('garuda-welcome')),
+    Key(["mod1"], "e", lazy.spawn('emacsclient -c -a \"emacs\"')),
+    Key(["mod1"], "q", lazy.spawn('qutebrowser')),
 
 # CONTROL + SHIFT KEYS
 
@@ -113,8 +113,8 @@ keys = [
 
 # INCREASE/DECREASE/MUTE VOLUME
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("bash -c " + home + "/.config/qtile/scripts/lower.sh")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("bash -c " + home + "/.config/qtile/scripts/raise.sh")),
 
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
@@ -122,7 +122,6 @@ keys = [
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
 
 # ASUS ROG AURA KEYS
-
     Key([], "XF86KbdBrightnessUp", lazy.spawn("rogauracore brightness 3")),
     Key([], "XF86KbdBrightnessDown", lazy.spawn("rogauracore brightness 0")),
     Key([], "XF86Launch3", lazy.spawn("rogauracore single_colorcycle 2")),
@@ -195,18 +194,15 @@ keys = [
         ),
 
 # FLIP LAYOUT FOR MONADTALL/MONADWIDE
-    
     Key([mod, "shift"], "f", lazy.layout.flip()),
 
 # FLIP LAYOUT FOR BSP
-    
     Key([mod, "mod1"], "k", lazy.layout.flip_up()),
     Key([mod, "mod1"], "j", lazy.layout.flip_down()),
     Key([mod, "mod1"], "l", lazy.layout.flip_right()),
     Key([mod, "mod1"], "h", lazy.layout.flip_left()),
 
 # MOVE WINDOWS UP OR DOWN BSP LAYOUT
-    
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
@@ -223,7 +219,6 @@ keys = [
         ),
 
 # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
-    
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "Left", lazy.layout.swap_left()),

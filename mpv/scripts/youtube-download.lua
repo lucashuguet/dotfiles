@@ -1,12 +1,12 @@
 -- youtube-download.lua
 --
--- Download video/audio from youtube via youtube-dl and ffmpeg/avconv
+-- Download video/audio from youtube via yt-dlp and ffmpeg/avconv
 -- This is forked/based on https://github.com/jgreco/mpv-youtube-quality
 --
 -- Video download bound to ctrl-d by default.
 -- Audio download bound to ctrl-a by default.
 
--- Requires youtube-dl in PATH for video download
+-- Requires yt-dlp in PATH for video download
 -- Requires ffmpeg or avconv in PATH for audio download
 
 local mp = require 'mp'
@@ -29,8 +29,8 @@ local opts = {
     -- insert a value between 0 (better) and 9 (worse) for VBR or a specific bitrate like 128K
     audio_quality = "0",
 
-    -- Same as youtube-dl --format FORMAT
-    -- see https://github.com/ytdl-org/youtube-dl/blob/master/README.md#format-selection
+    -- Same as yt-dlp --format FORMAT
+    -- see https://github.com/ytdl-org/yt-dlp/blob/master/README.md#format-selection
     -- set to "current" to download the same quality that is currently playing
     video_format = "",
 
@@ -41,10 +41,10 @@ local opts = {
     restrict_filenames = true,
 
     -- Download the whole playlist (false) or only one video (true)
-    -- Same as youtube-dl --no-playlist
+    -- Same as yt-dlp --no-playlist
     no_playlist = true,
 
-    -- Use an archive file, see youtube-dl --download-archive
+    -- Use an archive file, see yt-dlp --download-archive
     -- You have these options:
     --  * Set to empty string "" to not use an archive file
     --  * Set an absolute path to use one archive for all downloads e.g. download_archive="/home/user/archive.txt"
@@ -52,16 +52,16 @@ local opts = {
     --  * Use $PLAYLIST to create one archive per playlist e.g. download_archive="/home/user/archives/$PLAYLIST.txt"
     download_archive = "",
 
-    -- Use a cookies file for youtube-dl
-    -- Same as youtube-dl --cookies
+    -- Use a cookies file for yt-dlp
+    -- Same as yt-dlp --cookies
     -- On Windows you need to use a double blackslash or a single fordwardslash
     -- For example "C:\\Users\\Username\\cookies.txt"
     -- Or "C:/Users/Username/cookies.txt"
     cookies = "",
 
     -- Filename or full path
-    -- Same as youtube-dl -o FILETEMPLATE
-    -- see https://github.com/ytdl-org/youtube-dl/blob/master/README.md#output-template
+    -- Same as yt-dlp -o FILETEMPLATE
+    -- see https://github.com/ytdl-org/yt-dlp/blob/master/README.md#output-template
     -- A relative path or a file name is relative to the path mpv was launched from
     -- On Windows you need to use a double blackslash or a single fordwardslash
     -- For example "C:\\Users\\Username\\Downloads\\%(title)s.%(ext)s"
@@ -69,11 +69,11 @@ local opts = {
     filename = "%(title)s.%(ext)s",
 
     -- Subtitle language
-    -- Same as youtube-dl --sub-lang en
+    -- Same as yt-dlp --sub-lang en
     sub_lang = "en",
 
     -- Subtitle format
-    -- Same as youtube-dl --sub-format best
+    -- Same as yt-dlp --sub-format best
     sub_format = "best",
 
     -- Log file for download errors
@@ -124,7 +124,7 @@ local function path_join(...)
 end
 
 local function get_current_format()
-    -- get the current youtube-dl format or the default value
+    -- get the current yt-dlp format or the default value
     local ytdl_format = mp.get_property("options/ytdl-format")
     if not_empty(ytdl_format) then
         return  ytdl_format
@@ -208,7 +208,7 @@ local function download(download_type)
     local start_time_offset = 0
 
     if select_range_mode == 0 or (select_range_mode > 0 and (download_type == DOWNLOAD.AUDIO or download_type == DOWNLOAD.SUBTITLE)) then
-        table.insert(command, "youtube-dl")
+        table.insert(command, "yt-dlp")
         table.insert(command, "--no-overwrites")
         if opts.restrict_filenames then
           table.insert(command, "--restrict-filenames")
@@ -320,7 +320,7 @@ local function download(download_type)
                 end
             end
         else
-            -- default youtube-dl filename pattern
+            -- default yt-dlp filename pattern
             filename_format = "%(title)s-%(id)s." .. start_time_str .. "-" .. end_time_str .. ".%(ext)s"
         end
 
@@ -346,8 +346,8 @@ local function download(download_type)
         end
 
         -- Get the download url of the video file
-        -- e.g.: youtube-dl -g -f bestvideo[ext*=mp4]+bestaudio/best[ext*=mp4]/best -s --get-filename https://www.youtube.com/watch?v=abcdefg
-        command = {"youtube-dl"}
+        -- e.g.: yt-dlp -g -f bestvideo[ext*=mp4]+bestaudio/best[ext*=mp4]/best -s --get-filename https://www.youtube.com/watch?v=abcdefg
+        command = {"yt-dlp"}
         if opts.restrict_filenames then
             table.insert(command, "--restrict-filenames")
         end
@@ -410,8 +410,8 @@ local function download(download_type)
         table.remove(info_lines)
 
         if download_type == DOWNLOAD.VIDEO_EMBED_SUBTITLE then
-            -- youtube-dl --write-sub --skip-download  https://www.youtube.com/watch?v=abcdefg -o "temp.%(ext)s"
-            command = {"youtube-dl", "--write-sub", "--skip-download", "--sub-lang", opts.sub_lang}
+            -- yt-dlp --write-sub --skip-download  https://www.youtube.com/watch?v=abcdefg -o "temp.%(ext)s"
+            command = {"yt-dlp", "--write-sub", "--skip-download", "--sub-lang", opts.sub_lang}
             if not_empty(opts.sub_format) then
                 table.insert(command, "--sub-format")
                 table.insert(command, opts.sub_format)
