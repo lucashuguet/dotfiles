@@ -4,7 +4,8 @@
 dotfiles=~/dotfiles
 
 # Installing requirements
-sudo pacman -Syu alacritty \
+sudo pacman -Syu --needed \
+    alacritty \
     fish \
     mc \
     mpv \
@@ -19,8 +20,7 @@ sudo pacman -Syu alacritty \
     neovim \
     nitrogen \
     feh \
-    volumeicon \
-    numlockx \
+    pasystray \
     blueman \
     lxappearance \
     lxsession \
@@ -32,10 +32,8 @@ sudo pacman -Syu alacritty \
     dolphin \
     alsa \
     alsa-utils \
-    pipewire \
-    pipewire-alsa \
-    pipewire-pulse \
-    plasma-network \
+    pipewire{pulse,alsa,jack} \
+    plasma-framework \
     xorg \
     nvidia \
     sddm \
@@ -43,13 +41,20 @@ sudo pacman -Syu alacritty \
     mpv \
     p7zip \
     python-pip \
-    nwg-launchers \
     adobe-source-code-pro-fonts \
     awesome-terminal-fonts \
     noto-fonts \
-    noto-fonts-cjk
+    noto-fonts-cjk \
+    python-psutil \
+    pavucontrol \
+    networkmanager \
+    network-manager-applet \
+    flameshot \
+    find-the-command \
+    r8168
 
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+git clone https://aur.archlinux.org/nwg-launchers.git $dotfiles/aur
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Delete existing dotfiles/folders
@@ -64,31 +69,40 @@ sudo rm -rf /usr/share/sddm/
 # Creating links
 
 mkdir ~/.config
-ln -sf $dotfiles/alacritty ~/.config/alacritty
-ln -sf $dotfiles/fish ~/.config/fish
-ln -sf $dotfiles/mc ~/.config/mc
-ln -sf $dotfiles/mpv ~/.config/mpv
-ln -sf $dotfiles/neofetch ~/.config/neofetch
-ln -sf $dotfiles/picom ~/.config/picom
-ln -sf $dotfiles/qtile ~/.config/qtile
-ln -sf $dotfiles/qutebrowser ~/.config/qutebrowser
-ln -sf $dotfiles/ranger ~/.config/ranger
-ln -sf $dotfiles/.doom.d ~/.doom.d
-ln -sf $dotfiles/starship.toml ~/.config/starship.toml
+ln -sf $dotfiles/alacritty ~/.config/
+ln -sf $dotfiles/fish ~/.config/
+ln -sf $dotfiles/mc ~/.config/
+ln -sf $dotfiles/mpv ~/.config/
+ln -sf $dotfiles/neofetch ~/.config/
+ln -sf $dotfiles/picom ~/.config/
+ln -sf $dotfiles/qtile ~/.config/
+ln -sf $dotfiles/qutebrowser ~/.config/
+ln -sf $dotfiles/ranger ~/.config/
+ln -sf $dotfiles/nwg-launchers ~/.config
+ln -sf $dotfiles/dunst ~/.config
+ln -sf $dotfiles/.doom.d ~
+ln -sf $dotfiles/starship.toml ~/.config/
 
 sudo cp -r $dotfiles/sddm /usr/share/
 sudo cp -r $dotfiles/sddm.conf.d /etc/
 sudo cp $dotfiles/sddm.conf /etc/
+sudo cp $dotfiles/30-touchpad.conf /etc/X11/xorg.conf.d/
+sudo cp $dotfiles/alsa-base.conf /etc/modprobe.d/
 
-mkdir ~/.icons
-mkdir ~/.themes
-
-cp -r $dotfiles/icons/* ~/.icons
-cp -r $dotfiles/themes/* ~/.themes
+cp -r $dotfiles/icons/* ~/.local/share/icons
+cp -r $dotfiles/themes/* ~/.local/share/themes
+sudo ln -s ~/.local/share/icons/Sweet-cursors /usr/share/icons
 
 mkdir -p ~/.local/share/fonts
 
 cp $dotfiles/fonts/* ~/.local/share/fonts
 
+# some other settings
+
+localectl set-x11-keymap fr
+systemctl enable --user pipewire pipewire-pulse
+sudo systemctl enable NetworkManager bluetooth
+
 ~/.emacs.d/bin/doom install
+cd $dotfiles/aur/nwg-launchers && makepkg -si
 sudo chsh -s /bin/fish

@@ -12,26 +12,11 @@ function run {
 #starting utility applications at boot time
 lxsession &
 run nm-applet &
-run pamac-tray &
-numlockx on &
 blueman-applet &
-#flameshot &
-#picom --config $HOME/.config/picom/picom.conf &
+flameshot &
 picom --config .config/picom/picom-blur.conf --experimental-backends &
-#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dunst &
 # feh -bg-fill ~/dotfiles/wallpaper/gobacktothefuture.png
-#starting user applications at boot time
-run volumeicon &
-#run discord &
+pasystray &
 nitrogen --restore &
 emacs --daemon &
-#run caffeine -a &
-#run vivaldi-stable &
-#run firefox &
-#run thunar &
-#run dropbox &
-#run insync start &
-#run spotify &
-#run atom &
-#run telegram-desktop &
