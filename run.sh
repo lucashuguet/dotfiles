@@ -51,6 +51,9 @@ sudo pacman -Syu --needed \
     networkmanager \
     network-manager-applet \
     flameshot \
+    yt-dlp \
+    r8168 \
+    pkgfile
 
 rm -rf ~/.emacs.d
 

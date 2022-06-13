@@ -113,8 +113,8 @@ keys = [
 
 # INCREASE/DECREASE/MUTE VOLUME
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("bash -c " + home + "/.config/qtile/scripts/lower.sh")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("bash -c " + home + "/.config/qtile/scripts/raise.sh")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+")),
 
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),

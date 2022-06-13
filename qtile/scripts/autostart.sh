@@ -17,6 +17,5 @@ flameshot &
 picom --config .config/picom/picom-blur.conf --experimental-backends &
 dunst &
 # feh -bg-fill ~/dotfiles/wallpaper/gobacktothefuture.png
-pasystray &
 nitrogen --restore &
 emacs --daemon &
