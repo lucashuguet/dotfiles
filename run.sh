@@ -32,7 +32,8 @@ sudo pacman -Syu --needed \
     dolphin \
     alsa \
     alsa-utils \
-    pipewire{pulse,alsa,jack} \
+    pipewire \
+    pipewire-{pulse,alsa,jack} \
     plasma-framework \
     xorg \
     nvidia \
@@ -51,9 +52,12 @@ sudo pacman -Syu --needed \
     network-manager-applet \
     flameshot \
 
+rm -rf ~/.emacs.d
+
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
-git clone https://aur.archlinux.org/nwg-launchers.git $dotfiles/aur
-git clone https://aur.archlinux.org/find-the-command.git $dotfiles/aur
+git clone https://aur.archlinux.org/nwg-launchers.git $dotfiles/aur/nwg-launchers
+git clone https://aur.archlinux.org/find-the-command-git.git $dotfiles/aur/find-the-command
+
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Delete existing dotfiles/folders
@@ -88,21 +92,26 @@ sudo cp $dotfiles/sddm.conf /etc/
 sudo cp $dotfiles/30-touchpad.conf /etc/X11/xorg.conf.d/
 sudo cp $dotfiles/alsa-base.conf /etc/modprobe.d/
 
-cp -r $dotfiles/icons/* ~/.local/share/icons
-cp -r $dotfiles/themes/* ~/.local/share/themes
-sudo ln -s ~/.local/share/icons/Sweet-cursors /usr/share/icons
-
+mkdir -p ~/.local/share/icons
+mkdir -p ~/.local/share/themes
 mkdir -p ~/.local/share/fonts
 
+cp -r $dotfiles/icons/* ~/.local/share/icons
+cp -r $dotfiles/themes/* ~/.local/share/themes
 cp $dotfiles/fonts/* ~/.local/share/fonts
+
+sudo ln -s ~/.local/share/icons/Sweet-cursors /usr/share/icons
+sudo ln -s ~/.local/share/themes/Sweet-Dark-v40 /usr/share/themes
 
 # some other settings
 
 localectl set-x11-keymap fr
 systemctl enable --user pipewire pipewire-pulse
-sudo systemctl enable NetworkManager bluetooth
+sudo systemctl enable NetworkManager bluetooth sddm
 
 ~/.emacs.d/bin/doom install
 cd $dotfiles/aur/nwg-launchers && makepkg -si
 cd $dotfiles/aur/find-the-command && makepkg -si
+
+chsh -s /bin/fish
 sudo chsh -s /bin/fish
