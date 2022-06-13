@@ -50,11 +50,10 @@ sudo pacman -Syu --needed \
     networkmanager \
     network-manager-applet \
     flameshot \
-    find-the-command \
-    r8168
 
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 git clone https://aur.archlinux.org/nwg-launchers.git $dotfiles/aur
+git clone https://aur.archlinux.org/find-the-command.git $dotfiles/aur
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Delete existing dotfiles/folders
@@ -105,4 +104,5 @@ sudo systemctl enable NetworkManager bluetooth
 
 ~/.emacs.d/bin/doom install
 cd $dotfiles/aur/nwg-launchers && makepkg -si
+cd $dotfiles/aur/find-the-command && makepkg -si
 sudo chsh -s /bin/fish
