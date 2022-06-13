@@ -4,62 +4,16 @@
 dotfiles=~/dotfiles
 
 # Installing requirements
-sudo pacman -Syu --needed \
-    alacritty \
-    fish \
-    mc \
-    mpv \
-    neofetch \
-    picom \
-    qtile \
-    qutebrowser \
-    ranger \
-    starship \
-    firefox \
-    emacs \
-    neovim \
-    nitrogen \
-    feh \
-    pasystray \
-    blueman \
-    lxappearance \
-    lxsession \
-    dunst \
-    exa \
-    bat \
-    nitrogen \
-    mcfly \
-    dolphin \
-    alsa \
-    alsa-utils \
-    pipewire \
-    pipewire-{pulse,alsa,jack} \
-    plasma-framework \
-    xorg \
-    nvidia \
-    sddm \
-    dmenu \
-    mpv \
-    p7zip \
-    python-pip \
-    adobe-source-code-pro-fonts \
-    awesome-terminal-fonts \
-    noto-fonts \
-    noto-fonts-cjk \
-    python-psutil \
-    pavucontrol \
-    networkmanager \
-    network-manager-applet \
-    flameshot \
-    yt-dlp \
-    r8168 \
-    pkgfile
+sudo pacman -Syu --needed - < pkg.txt
 
 rm -rf ~/.emacs.d
 
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+
 git clone https://aur.archlinux.org/nwg-launchers.git $dotfiles/aur/nwg-launchers
 git clone https://aur.archlinux.org/find-the-command-git.git $dotfiles/aur/find-the-command
+git clone https://aur.archlinux.org/sweet-dark-theme.git $dotfiles/aur/sweet-dark-theme
+git clone https://aur.archlinux.org/tela-icon-theme.git $dotfiles/aur/tela-icon-theme
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -113,8 +67,11 @@ systemctl enable --user pipewire pipewire-pulse
 sudo systemctl enable NetworkManager bluetooth sddm
 
 ~/.emacs.d/bin/doom install
+
 cd $dotfiles/aur/nwg-launchers && makepkg -si
 cd $dotfiles/aur/find-the-command && makepkg -si
+cd $dotfiles/aur/sweet-dark-theme && makepkg -si
+cd $dotfiles/aur/tela-icon-theme && makepkg -si
 
 chsh -s /bin/fish
 sudo chsh -s /bin/fish
