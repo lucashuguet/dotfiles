@@ -7,15 +7,13 @@ function run {
   fi
 }
 
-
-
-#starting utility applications at boot time
+# starting utility applications at boot time
 lxsession &
-run nm-applet &
+nm-applet &
 blueman-applet &
 flameshot &
 picom --config .config/picom/picom-blur.conf --experimental-backends &
 dunst &
-# feh -bg-fill ~/dotfiles/wallpaper/gobacktothefuture.png
+# feh --bg-fill ~/dotfiles/wallpaper/gobacktothefuture.png
 nitrogen --restore &
 emacs --daemon &

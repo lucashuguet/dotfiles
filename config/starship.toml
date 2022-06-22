@@ -1,7 +1,8 @@
 ## FIRST LINE/ROW: Info & Status
 # First param ─┌
 [username]
-format = " [╭─$user]($style)@"
+# format = " [╭─$user]($style)@"
+format = " [$user]($style)@"
 show_always = true
 style_root = "bold red"
 style_user = "bold red"
@@ -73,7 +74,8 @@ time_format = "%T"
 # Prompt: param 2
 [character]
 error_symbol = " [×](bold red)"
-success_symbol = " [╰─λ](bold red)"
+# success_symbol = " [╰─λ](bold red)"
+success_symbol = " [λ](bold red)"
 
 # SYMBOLS
 [status]

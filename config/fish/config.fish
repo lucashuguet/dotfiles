@@ -13,7 +13,6 @@ end
 set -U __done_min_cmd_duration 10000
 set -U __done_notification_urgency_level low
 
-
 ## Environment setup
 # Apply .profile: use this to put fish compatible .profile stuff in
 if test -f ~/.fish_profile
@@ -34,10 +33,11 @@ if test -d ~/Applications/depot_tools
     end
 end
 
-
 ## Starship prompt
-if status --is-interactive
-   source ("/usr/bin/starship" init fish --print-full-init | psub)
+if not status --is-login
+   if status --is-interactive
+      source ("/usr/bin/starship" init fish --print-full-init | psub)
+   end
 end
 
 ## Advanced command-not-found hook
@@ -85,11 +85,11 @@ end
 function copy
     set count (count $argv | tr -d \n)
     if test "$count" = 2; and test -d "$argv[1]"
-	set from (echo $argv[1] | trim-right /)
-	set to (echo $argv[2])
-        command cp -r $from $to
+      set from (echo $argv[1] | trim-right /)
+      set to (echo $argv[2])
+      command cp -r $from $to
     else
-        command cp $argv
+      command cp $argv
     end
 end
 
@@ -128,7 +128,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias hw='hwinfo --short'                                   # Hardware Info
 alias big="expac -H M '%m\t%n' | sort -h | nl"              # Sort installed packages according to size in MB
-alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'			# List amount of -git packages
+alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'          # List amount of -git packages
 
 # Get fastest mirrors
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"

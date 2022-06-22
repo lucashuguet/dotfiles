@@ -5,6 +5,8 @@ alsa-utils
 awesome-terminal-fonts
 bat
 blueman
+bluez
+bluez-utils
 dmenu
 dolphin
 dunst
@@ -19,15 +21,17 @@ lxappearance
 lxsession
 mc
 mcfly
-mpv
+mesa-utils
 mpv
 neofetch
 neovim
+networkmanager
 network-manager-applet
 nitrogen
 nitrogen
 noto-fonts
 noto-fonts-cjk
+noto-fonts-emoji
 nvidia
 nvidia-prime
 nvidia-settings
@@ -47,6 +51,7 @@ python-psutil
 qtile
 qutebrowser
 ranger
+reflector
 ripgrep
 sddm
 starship
