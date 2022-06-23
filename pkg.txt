@@ -25,6 +25,8 @@ mesa-utils
 mpv
 neofetch
 neovim
+nerd-fonts-fantasque-sans-mono
+nerd-fonts-fira-code
 networkmanager
 network-manager-applet
 nitrogen

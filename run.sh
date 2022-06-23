@@ -15,6 +15,7 @@ git clone https://aur.archlinux.org/find-the-command-git.git $dotfiles/aur/find-
 git clone https://aur.archlinux.org/sweet-dark-theme.git $dotfiles/aur/sweet-dark-theme
 git clone https://aur.archlinux.org/tela-icon-theme.git $dotfiles/aur/tela-icon-theme
 git clone https://aur.archlinux.org/sweet-cursors-theme-git.git $dotfiles/aur/sweet-cursors-theme-git
+git clone https://aur.archlinux.org/sweet-kde-git.git $dotfiles/aur/sweet-kde-git
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -38,10 +39,6 @@ sudo cp $dotfiles/sys/sddm.conf /etc/
 sudo cp $dotfiles/sys/30-touchpad.conf /etc/X11/xorg.conf.d/
 sudo cp $dotfiles/sys/alsa-base.conf /etc/modprobe.d/
 
-mkdir -p ~/.local/share/fonts
-
-cp $dotfiles/fonts/* ~/.local/share/fonts
-
 # Some other settings
 localectl set-x11-keymap fr
 systemctl enable --user pipewire pipewire-pulse
@@ -54,6 +51,9 @@ cd $dotfiles/aur/find-the-command && makepkg -si
 cd $dotfiles/aur/sweet-dark-theme && makepkg -si
 cd $dotfiles/aur/tela-icon-theme && makepkg -si
 cd $dotfiles/aur/sweet-cursors-theme-git && makepkg -si
+cd $dotfiles/aur/sweet-kde-git && makepkg -si
+
+$dotfiles/scripts/audio.sh
 
 chsh -s /bin/fish
 sudo chsh -s /bin/fish

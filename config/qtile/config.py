@@ -68,6 +68,10 @@ keys = [
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+")),
 
+    Key([], "XF86Launch4", lazy.spawn("amixer -q set Capture toggle")),
+    Key([], "Next", lazy.spawn("amixer set Capture 5%-")),
+    Key([], "Prior", lazy.spawn("amixer set Capture 5%+")),
+
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
