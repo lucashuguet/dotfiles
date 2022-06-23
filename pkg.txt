@@ -25,8 +25,6 @@ mesa-utils
 mpv
 neofetch
 neovim
-nerd-fonts-fantasque-sans-mono
-nerd-fonts-fira-code
 networkmanager
 network-manager-applet
 nitrogen
@@ -57,5 +55,6 @@ reflector
 ripgrep
 sddm
 starship
+ttf-fantasque-sans-mono
 xorg
 yt-dlp
