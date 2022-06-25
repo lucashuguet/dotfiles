@@ -27,7 +27,7 @@ sudo rm -rf /usr/share/sddm/
 mkdir ~/.config
 
 ln -sf $dotfiles/config/* ~/.config/
-ln -sf $dotfiles/home/* ~
+ln -sf $dotfiles/home/.* ~
 
 sudo cp -r $dotfiles/sys/sddm /usr/share/
 sudo cp -r $dotfiles/sys/sddm.conf.d /etc/
