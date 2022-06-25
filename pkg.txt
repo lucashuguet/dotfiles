@@ -3,6 +3,7 @@ alacritty
 alsa
 alsa-utils
 awesome-terminal-fonts
+base-devel
 bat
 blueman
 bluez
@@ -18,6 +19,8 @@ find-the-command-git
 firefox
 fish
 flameshot
+git
+kvantum
 kvantum-theme-sweet-git
 lxappearance
 lxsession
@@ -50,6 +53,8 @@ pkgfile
 plasma-framework
 python-pip
 python-psutil
+qt5ct
+qt5-tools
 qtile
 qutebrowser
 ranger
@@ -62,4 +67,5 @@ sweet-dark-theme
 tela-icon-theme
 ttf-fantasque-sans-mono
 xorg
+xorg-xinit
 yt-dlp
