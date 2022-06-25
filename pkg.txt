@@ -30,7 +30,6 @@ neovim
 networkmanager
 network-manager-applet
 nitrogen
-nitrogen
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
