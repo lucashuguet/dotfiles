@@ -5,6 +5,7 @@ import subprocess
 from typing import List
 from libqtile.command import lazy
 from libqtile.widget import Spacer
+from libqtile.command.client import Client
 from libqtile import layout, bar, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
 
@@ -461,6 +462,11 @@ def set_floating(window):
     if (window.window.get_wm_transient_for()
             or window.window.get_wm_type() in floating_types):
         window.floating = True
+
+@hook.subscribe.focus_change
+def mpv():
+    home = os.path.expanduser('~')
+    subprocess.Popen([home + "/.config/qtile/scripts/mpv.py"])
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
 

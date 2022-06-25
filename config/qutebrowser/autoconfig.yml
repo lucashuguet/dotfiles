@@ -6,8 +6,5 @@
 
 config_version: 2
 settings:
-  url.searchengines:
-    global:
-      DEFAULT: https://www.startpage.com/do/dsearch?query={}
-  url.start_pages:
-    global: https://start.duckduckgo.com
+  content.notifications.enabled:
+    https://www.reddit.com: false

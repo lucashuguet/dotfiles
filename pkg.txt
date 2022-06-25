@@ -14,9 +14,11 @@ emacs
 exa
 fd
 feh
+find-the-command-git
 firefox
 fish
 flameshot
+kvantum-theme-sweet-git
 lxappearance
 lxsession
 mc
@@ -36,6 +38,7 @@ nvidia
 nvidia-prime
 nvidia-settings
 nvidia-utils
+nwg-launchers
 p7zip
 pasystray
 pavucontrol
@@ -55,6 +58,9 @@ reflector
 ripgrep
 sddm
 starship
+sweet-cursors-theme-git
+sweet-dark-theme
+tela-icon-theme
 ttf-fantasque-sans-mono
 xorg
 yt-dlp
