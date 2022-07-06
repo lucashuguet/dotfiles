@@ -34,7 +34,7 @@ keys = [
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "v", lazy.spawn('pavucontrol')),
     Key([mod], "d", lazy.spawn('nwggrid -p -o 0.4')),
-    Key([mod], "e", lazy.spawn('dolphin')),
+    Key([mod], "e", lazy.spawn('pcmanfm')),
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn(myTerm)),
     Key([mod], "x", lazy.shutdown()),
