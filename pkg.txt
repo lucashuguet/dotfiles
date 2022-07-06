@@ -20,7 +20,6 @@ fish
 flameshot
 git
 kvantum
-kvantum-theme-sweet-git
 lxappearance
 lxsession
 mc
@@ -54,8 +53,6 @@ pkgfile
 plasma-framework
 python-pip
 python-psutil
-qt5ct
-qt5-tools
 qtile
 qutebrowser
 ranger
