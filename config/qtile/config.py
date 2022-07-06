@@ -340,6 +340,34 @@ def init_widgets_list():
             txt_minimized='>_ ',
         ),
 
+        # widget.CPU(
+        #     font="Noto Sans Bold",
+        #     fontsize = 12,
+
+        #     update_interval = 1,
+        #     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e bpytop')},
+        #     format = "CPU used at {load_percent}%",
+
+        #     foreground = colors[5],
+        #     background = colors[22],
+        # ),
+
+        widget.CPUGraph(
+            border_color = colors[22],
+            graph_color = colors[22],
+
+            margin_x = 0,
+            margin_y = 0
+        ),
+
+        widget.MemoryGraph(
+            border_color = colors[16],
+            graph_color = colors[16],
+
+            margin_x = 0,
+            margin_y = 0
+        ),
+
         widget.CurrentLayoutIcon(
             custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
 
@@ -358,18 +386,6 @@ def init_widgets_list():
             background = colors[3]
         ),
 
-        widget.CPU(
-            font="Noto Sans Bold",
-            fontsize = 12,
-
-            update_interval = 1,
-            mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e bpytop')},
-            format = "CPU used at {load_percent}%",
-
-            foreground = colors[5],
-            background = colors[22],
-        ),
-
         widget.Battery(
             font = "Noto Sans Bold",
             fontsize = 12,
@@ -381,18 +397,18 @@ def init_widgets_list():
             background = colors[1],
         ),
 
-        widget.Memory(
-            font="Noto Sans Bold",
-            fontsize = 12,
+        # widget.Memory(
+        #     font="Noto Sans Bold",
+        #     fontsize = 12,
 
-            measure_mem = 'M',
-            update_interval = 1,
-            format = '{MemUsed: .0f}M/{MemTotal: .0f}M',
-            mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e bpytop')},
+        #     measure_mem = 'M',
+        #     update_interval = 1,
+        #     format = '{MemUsed: .0f}M/{MemTotal: .0f}M',
+        #     mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e bpytop')},
 
-            foreground = colors[5],
-            background = colors[16],
-        ),
+        #     foreground = colors[5],
+        #     background = colors[16],
+        # ),
 
         widget.Clock(
             font = "Noto Sans Bold",
@@ -509,4 +525,4 @@ floating_layout = layout.Floating(
 auto_fullscreen = True
 
 focus_on_window_activation = "focus"
-wmname = "qtile"
+wmname = "LG3D"

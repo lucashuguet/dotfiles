@@ -9,7 +9,6 @@ blueman
 bluez
 bluez-utils
 dmenu
-dolphin
 dunst
 emacs
 exa
@@ -30,6 +29,7 @@ mesa-utils
 mpv
 neofetch
 neovim
+nerd-fonts-fantasque-sans-mono
 networkmanager
 network-manager-applet
 nitrogen
@@ -44,6 +44,7 @@ nwg-launchers
 p7zip
 pasystray
 pavucontrol
+pcmanfm
 picom
 pipewire
 pipewire-alsa
@@ -65,7 +66,7 @@ starship
 sweet-cursors-theme-git
 sweet-dark-theme
 tela-icon-theme
-ttf-fantasque-sans-mono
+xarchiver
 xorg
 xorg-xinit
 yt-dlp

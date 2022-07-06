@@ -8,7 +8,7 @@ git clone https://aur.archlinux.org/yay.git $dotfiles/aur/yay
 cd $dotfiles/aur/yay && makepkg -si
 
 # Installing requirements
-yay -Syu --needed - < pkg.txt
+yay -Syu --needed - < $dotfiles/pkg.txt
 
 rm -rf ~/.emacs.d
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
