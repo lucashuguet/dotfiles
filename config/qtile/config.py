@@ -336,7 +336,7 @@ def init_widgets_list():
             foreground=colors[5],
             background=colors[20],
 
-            txt_floating='🗗', # overlap emoji
+            txt_floating='🗗 ', # overlap emoji
             txt_minimized='>_ ',
         ),
 
