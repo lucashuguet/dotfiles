@@ -2,10 +2,11 @@ import os
 import re
 import socket
 import subprocess
+from libqtile.log_utils import logger
 from typing import List
+from libqtile.command.client import InteractiveCommandClient
 from libqtile.command import lazy
 from libqtile.widget import Spacer
-from libqtile.command.client import Client
 from libqtile import layout, bar, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
 
@@ -26,9 +27,19 @@ def window_to_next_group(qtile):
         i = qtile.groups.index(qtile.currentGroup)
         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
 
+@lazy.function
+def float_to_front(qtile):
+    logger.warning(dir(qtile.current_group))
+
+    for window in qtile.current_group.windows:
+        if window.floating:
+            window.cmd_bring_to_front()
+
 myTerm = "alacritty"
 
 keys = [
+    Key([mod], "p", float_to_front),
+
     # SUPER + FUNCTION KEYS
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
@@ -81,7 +92,7 @@ keys = [
     # ASUS ROG AURA KEYS
     Key([], "XF86KbdBrightnessUp", lazy.spawn("rogauracore brightness 3")),
     Key([], "XF86KbdBrightnessDown", lazy.spawn("rogauracore brightness 0")),
-    Key([], "XF86Launch3", lazy.spawn("rogauracore single_colorcycle 2")),
+    Key([], "XF86Launch3", lazy.spawn("rogauracore rainbow_cycle 2")),
     Key([], "XF86Launch2", lazy.spawn("rogauracore cyan")),
 
     # QTILE LAYOUT KEYS
@@ -97,7 +108,6 @@ keys = [
     Key([mod], "j", lazy.layout.down()),
     Key([mod], "h", lazy.layout.left()),
     Key([mod], "l", lazy.layout.right()),
-
 
     # RESIZE UP, DOWN, LEFT, RIGHT
     Key([mod, "control"], "l",
@@ -479,10 +489,9 @@ def set_floating(window):
             or window.window.get_wm_type() in floating_types):
         window.floating = True
 
-@hook.subscribe.focus_change
-def mpv():
-    home = os.path.expanduser('~')
-    subprocess.Popen([home + "/.config/qtile/scripts/mpv.py"])
+@hook.subscribe.setgroup
+def move_floating_windows():
+    subprocess.Popen(home + "/.config/qtile/scripts/mpv.py")
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
 
@@ -492,7 +501,7 @@ cursor_warp = False
 
 floating_layout = layout.Floating(
     float_rules = [
-        *layout.Floating.default_float_rules,
+        # *layout.Floating.default_float_rules,
         Match(wm_class='confirm'),
         Match(wm_class='dialog'),
         Match(wm_class='download'),
@@ -504,19 +513,12 @@ floating_layout = layout.Floating(
         Match(wm_class='confirmreset'),
         Match(wm_class='makebranch'),
         Match(wm_class='maketag'),
-        Match(wm_class='Arandr'),
-        Match(wm_class='feh'),
-        Match(wm_class='Galculator'),
         Match(title='branchdialog'),
         Match(title='Open File'),
         Match(title='pinentry'),
         Match(wm_class='ssh-askpass'),
         Match(wm_class='lxpolkit'),
         Match(wm_class='Lxpolkit'),
-        Match(wm_class='yad'),
-        Match(wm_class='Yad'),
-        Match(wm_class='Cairo-dock'),
-        Match(wm_class='cairo-dock'),
     ],
     fullscreen_border_width = 0,
     border_width = 0

@@ -155,8 +155,11 @@ alias vim="nvim"
 
 set -Ux CARGO_HOME $HOME/.cargo
 set -Ux RUST_SRC_PATH /usr/local/src/rust/src
-set -U fish_user_paths $CARGO_HOME $fish_user_paths
-set -U fish_user_paths /home/astrogoat/.local/share/gem/ruby/3.0.0/bin $fish_user_paths
+set -U fish_user_paths $CARGO_HOME/bin $fish_user_paths
+set -U fish_user_paths $HOME/.local/share/bin $fish_user_paths
+
+# Load node
+# load_nvm > /dev/stderr
 
 ## Run neofetch if session is interactive
 if status --is-interactive && type -q neofetch

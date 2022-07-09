@@ -25,6 +25,7 @@ sudo rm -rf /usr/share/sddm/
 
 # Creating links
 mkdir ~/.config
+rm -rf ~/.doom.d
 
 ln -sf $dotfiles/config/* ~/.config/
 ln -sf $dotfiles/home/.* ~
@@ -42,7 +43,7 @@ sudo systemctl enable NetworkManager bluetooth sddm
 
 ~/.emacs.d/bin/doom install
 
-$dotfiles/scripts/audio.sh
+sh $dotfiles/scripts/audio.sh
 
 chsh -s /bin/fish
 sudo chsh -s /bin/fish
