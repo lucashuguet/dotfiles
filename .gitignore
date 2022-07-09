@@ -1,2 +1,3 @@
 config/mpv/watch_later/
 config/qtile/__pycache__
+aur/*
