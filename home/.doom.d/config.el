@@ -16,6 +16,9 @@
 
 (setq rustic-cargo-bin "~/.cargo/bin/cargo")
 
+(setq company-idle-delay 0)
+(setq company-show-numbers t)
+
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
