@@ -22,7 +22,6 @@ git
 kvantum
 lxappearance
 lxsession
-mc
 mcfly
 mesa-utils
 mpv
