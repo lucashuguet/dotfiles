@@ -41,7 +41,7 @@ if not status --is-login
 end
 
 ## Advanced command-not-found hook
-source /usr/share/doc/find-the-command/ftc.fish
+# source /usr/share/doc/find-the-command/ftc.fish
 
 ## Functions
 # Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
@@ -103,7 +103,7 @@ alias l.="exa -a | egrep '^\.'"                                     # show only 
 alias ip="ip -color"
 
 # Replace some more things with better alternatives
-alias cat='bat --style header --style rules --style snip --style changes --style header'
+alias cat='bat --style header --style rule --style snip --style changes --style header'
 [ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
 
 # Common use
@@ -161,7 +161,7 @@ set -U fish_user_paths $HOME/.local/share/bin $fish_user_paths
 # Load node
 # load_nvm > /dev/stderr
 
-## Run neofetch if session is interactive
-if status --is-interactive && type -q neofetch
-   neofetch
+## Run pfetch if session is interactive
+if status --is-interactive && type -q pfetch
+   PF_INFO="ascii title os host kernel uptime pkgs shell" pfetch
 end
