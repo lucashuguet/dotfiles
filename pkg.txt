@@ -1,4 +1,3 @@
-adobe-source-code-pro-fonts
 alacritty
 alsa
 alsa-utils
@@ -10,7 +9,7 @@ bluez
 bluez-utils
 dmenu
 dunst
-emacs
+emacs-nativecomp
 exa
 fd
 feh
@@ -19,7 +18,6 @@ firefox
 fish
 flameshot
 git
-kvantum
 lxappearance
 lxsession
 mcfly
