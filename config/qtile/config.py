@@ -1,14 +1,10 @@
 import os
-import re
 import socket
 import subprocess
 from libqtile.log_utils import logger
-from typing import List
-from libqtile.command.client import InteractiveCommandClient
 from libqtile.command import lazy
-from libqtile.widget import Spacer
-from libqtile import layout, bar, widget, hook, qtile
-from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
+from libqtile import layout, bar, widget, hook
+from libqtile.config import Drag, Group, Key, Match, Screen
 
 mod = "mod4"
 mod1 = "alt"
@@ -49,11 +45,13 @@ keys = [
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn(myTerm)),
     Key([mod], "x", lazy.shutdown()),
+    Key([mod], "a", lazy.spawn("betterlockscreen -l")),
 
     # SUPER + SHIFT KEYS
     Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#c0c5ce' -sb '#c0c5ce' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
+    Key([mod, "shift"], "x", lazy.spawn(home + "/dotfiles/scripts/shutdown-script.sh")),
 
     # CONTROL + ALT KEYS
     Key(["mod1", "control"], "o", lazy.spawn(home + '/.config/qtile/scripts/picom-toggle.sh')),
@@ -232,25 +230,25 @@ layout_theme = init_layout_theme()
 
 layouts = [
     layout.MonadTall(margin=8, border_width=2, border_focus="#ff00ff", border_normal="#f4c2c2"),
-    layout.MonadWide(margin=8, border_width=2, border_focus="#ff00ff", border_normal="#f4c2c2"),
-    layout.Matrix(**layout_theme),
-    layout.Bsp(**layout_theme),
+    # layout.MonadWide(margin=8, border_width=2, border_focus="#ff00ff", border_normal="#f4c2c2"),
+    # layout.Matrix(**layout_theme),
+    # layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
-    layout.RatioTile(**layout_theme),
-    layout.Max(**layout_theme),
-    layout.Columns(**layout_theme),
-    layout.Stack(**layout_theme),
-    layout.Tile(**layout_theme),
-    layout.TreeTab(
-        sections=['FIRST', 'SECOND'],
-        bg_color = '#141414',
-        active_bg = '#0000ff',
-        inactive_bg = '#1e90ff',
-        padding_y =5,
-        section_top =10,
-        panel_width = 280),
-    layout.VerticalTile(**layout_theme),
-    layout.Zoomy(**layout_theme)
+    # layout.RatioTile(**layout_theme),
+    # layout.Max(**layout_theme),
+    # layout.Columns(**layout_theme),
+    # layout.Stack(**layout_theme),
+    # layout.Tile(**layout_theme),
+    # layout.TreeTab(
+    #     sections=['FIRST', 'SECOND'],
+    #     bg_color = '#141414',
+    #     active_bg = '#0000ff',
+    #     inactive_bg = '#1e90ff',
+    #     padding_y =5,
+    #     section_top =10,
+    #     panel_width = 280),
+    # layout.VerticalTile(**layout_theme),
+    # layout.Zoomy(**layout_theme)
 ]
 
 # COLORS FOR THE BAR
@@ -281,6 +279,34 @@ def init_colors():
         ["#fb9f7f", "#fb9f7f"], #22 light salmon
         ["#f0cc9c", "#f0cc9c"]  #23 light orange
     ]
+
+# def init_colors():
+#     return [
+#         ["#fd7d4f", "#fd7d4f"], #0 purple
+#         ["#2c3155", "#2c3155"], #1 dark blue
+#         ["#c0c5ce", "#c0c5ce"], #2 gray
+#         ["#ff5050", "#ff5050"], #3 orange-red
+#         ["#f4c2c2", "#f4c2c2"], #4 light pink
+#         ["#ffffff", "#ffffff"], #5 white
+#         ["#ffd47e", "#ffd47e"], #6 yellow
+#         ["#62FF00", "#62FF00"], #7 green
+#         ["#000000", "#000000"], #8 black
+#         ["#c40234", "#c40234"], #9 red
+#         ["#fd7d4f", "#fd7d4f"], #10 light blue
+#         ["#ff00ff", "#ff00ff"], #11 fuchsia
+#         ["#4c566a", "#4c566a"], #12 dark gray
+#         ["#282c34", "#282c34"], #13 dark dark gray
+#         ["#212121", "#212121"], #14 black
+#         ["#fa0474", "#fa0474"], #15 pink
+#         ["#2aa899", "#2aa899"], #16 turquoise
+#         ["#abb2bf", "#abb2bf"], #17 gray
+#         ["#81a1c1", "#81a1c1"], #18 pastel blue
+#         ["#56b6c2", "#56b6c2"], #19 dark turquoise
+#         ["#1d0a22", "#1d0a22"], #20 blue
+#         ["#e06c75", "#e06c75"], #21 candy pink
+#         ["#fb9f7f", "#fb9f7f"], #22 light salmon
+#         ["#f0cc9c", "#f0cc9c"]  #23 light orange
+#     ]
 
 colors = init_colors()
 
@@ -477,7 +503,7 @@ main = None
 @hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
+    subprocess.call([home + '/dotfiles/scripts/autostart.sh'])
 
 @hook.subscribe.startup
 def start_always():
@@ -519,6 +545,7 @@ floating_layout = layout.Floating(
         Match(wm_class='ssh-askpass'),
         Match(wm_class='lxpolkit'),
         Match(wm_class='Lxpolkit'),
+        Match(wm_class='GoatLand'),
     ],
     fullscreen_border_width = 0,
     border_width = 0
