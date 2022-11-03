@@ -45,7 +45,6 @@ keys = [
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn(myTerm)),
     Key([mod], "x", lazy.shutdown()),
-    Key([mod], "a", lazy.spawn("betterlockscreen -l")),
 
     # SUPER + SHIFT KEYS
     Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#c0c5ce' -sb '#c0c5ce' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),

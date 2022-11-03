@@ -7,6 +7,7 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/ap/vim-css-color'
 Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+Plug 'glacambre/firenvim'
 
 call plug#end()
 
