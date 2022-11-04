@@ -1,13 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
-function run {
-  if ! pgrep $1 ;
-  then
-    $@&
-  fi
-}
-
-feh --no-fehbg --bg-fill '/home/astrogoat/dotfiles/wallpaper/gobacktothefuture.png' &
+~/.fehbg &
 picom --config ~/.config/picom/picom-blur.conf --experimental-backends &
 dunst &
 flameshot &
@@ -15,4 +8,4 @@ nm-applet &
 blueman-applet &
 pasystray &
 emacs --daemon &
-~/dotfiles/scripts/bar.sh &
+bar.sh &
