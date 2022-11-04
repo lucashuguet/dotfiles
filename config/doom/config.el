@@ -1,4 +1,4 @@
-(setq doom-theme 'doom-palenight
+(setq doom-theme 'xresources
       doom-font (font-spec :family "FantasqueSansMono Nerd Font" :size 20 :weight 'medium)
       display-line-numbers-type t)
 
