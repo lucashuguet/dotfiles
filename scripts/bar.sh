@@ -1,3 +1,13 @@
+typeset -i iProcNr="$$"
+typeset    fPIDFile="/tmp/bar.pid"
+
+if [ -f "$fPIDFile" ] ; then
+     echo "script already running, exiting."
+     exit 1
+else
+     echo "$iProcNr" > "$fPIDFile"
+fi
+
 while true
 do
 

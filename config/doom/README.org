@@ -29,7 +29,7 @@
 Set doom theme and font family and size. Also enable absolute line numbers.
 
 #+begin_src elisp
-(setq doom-theme 'xresources
+(setq doom-theme 'doom-palenight
       doom-font (font-spec :family "FantasqueSansMono Nerd Font" :size 20 :weight 'medium)
       display-line-numbers-type t)
 #+end_src
