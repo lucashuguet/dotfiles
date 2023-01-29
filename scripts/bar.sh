@@ -18,9 +18,10 @@ do
         # wifi=$(nmcli -t -f active,ssid dev wifi | grep -E '^yes' | sed 's/yes://')
         # test "$wifi" == "" && wifi="na"
 
-        time=$(date +"%a %d/%m %R:%S")
+        time=$(date +"%R:%S")
+        day=$(date +"%a %d %b")
 
-        bar="CPU: $cpu% | RAM: $mem Mib |🔋: $battery | $time"
+        bar="[💻 $cpu% ] [💾 $mem Mib] [🔋 $battery ] [📅 $day] [🕐 $time ]"
         xsetroot -name "$bar"
 
         sleep 1

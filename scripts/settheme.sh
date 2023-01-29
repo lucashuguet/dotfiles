@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-wal -qnte -i $1
+wal -qntes -i "$1"
 source ~/.cache/wal/colors.sh
 
 feh --bg-fill $wallpaper
@@ -62,6 +62,11 @@ echo "emacs*color15: $(getlightcolor.py $color7)"  | tee -a ~/.Xresources
 
 echo "Sxiv.background: $background" | tee -a ~/.Xresources
 echo "Sxiv.foreground: $foreground" | tee -a ~/.Xresources
+
+echo "qutebrowser.background: $background" | tee -a ~/.Xresources
+echo "qutebrowser.foreground: $foreground" | tee -a ~/.Xresources
+echo "qutebrowser.color8: $color8" | tee -a ~/.Xresources
+echo "qutebrowser.color14: $color14" | tee -a ~/.Xresources
 
 xrdb ~/.Xresources
 

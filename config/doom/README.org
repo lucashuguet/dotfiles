@@ -9,6 +9,7 @@
 - [[#prerequisites][Prerequisites]]
 - [[#configuration][Configuration]]
   - [[#appearance][Appearance]]
+  - [[#lisp][Lisp]]
   - [[#irc][IRC]]
   - [[#auto-completion][Auto Completion]]
   - [[#multiple-cursors][Multiple Cursors]]
@@ -29,9 +30,16 @@
 Set doom theme and font family and size. Also enable absolute line numbers.
 
 #+begin_src elisp
-(setq doom-theme 'doom-palenight
+(setq doom-theme 'xresources
       doom-font (font-spec :family "FantasqueSansMono Nerd Font" :size 20 :weight 'medium)
       display-line-numbers-type t)
+#+end_src
+
+** Lisp
+Use sbcl as default common lisp interpretor
+
+#+begin_src elisp
+(setq inferior-lisp-program "sbcl")
 #+end_src
 
 ** IRC

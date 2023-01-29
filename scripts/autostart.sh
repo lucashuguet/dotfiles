@@ -7,4 +7,5 @@ flameshot &
 nm-applet &
 blueman-applet &
 pasystray &
+clipster -d &
 bar.sh &

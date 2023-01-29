@@ -1,17 +1,17 @@
 #!/usr/bin/env sh
 
-file=$(ls ~/Pictures/wallpapers/ | sed "s/.png$//g" | dmenu -i)
+file=$(ls ~/Pictures/wallpapers/ | sed "s/.png$//g" | dmenu -p "Theme" -i)
 if [ $? == 1 ]; then	
 	notify-send "dmenutheme" "abort"
 	exit 0
 else
 	if [ "$file" = "default" ]; then
 		xrdb -remove
-		xrdb ~/dotfiles/scripts/dmenu.Xresources
+		xrdb ~/dotfiles/scripts/default.Xresources
 
 		feh --bg-fill ~/dotfiles/wallpaper/gobacktothefuture.png
 
-		kill -9 $(top -bcn 1 | grep autostart.sh | sed 1q | awk '{print $1}')
+		# kill -9 $(top -bcn 1 | grep autostart.sh | sed 1q | awk '{print $1}')
 		xdotool key super+r
 	
 		systemctl restart --user emacs.service

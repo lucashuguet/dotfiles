@@ -14,6 +14,7 @@ exec flameshot &
 exec pasystray &
 exec picom --config ~/.config/picom/picom-blur.conf --experimental-backends &
 exec dunst &
+exec clipster -d &
 exec emacs --daemon &
 
 exec qtile start

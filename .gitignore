@@ -1,3 +1,7 @@
 config/mpv/watch_later/
 config/qtile/__pycache__
+config/qutebrowser/bookmarks/
+config/qutebrowser/greasemonkey/
+config/qutebrowser/qsettings/
+config/qutebrowser/quickmarks
 aur/*
