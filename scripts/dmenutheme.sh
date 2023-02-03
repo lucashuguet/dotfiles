@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-file=$(ls ~/Pictures/wallpapers/ | sed "s/.png$//g" | dmenu -p "Theme" -i)
+# file=$(ls ~/Pictures/wallpapers/ | sed "s/.png$//g" | dmenu -p "Theme" -i)
+file=$(ls /home/astrogoat/Pictures/wallpapers/*.png | sxiv -ftio)
 if [ $? == 1 ]; then	
 	notify-send "dmenutheme" "abort"
 	exit 0
@@ -15,14 +16,14 @@ else
 		xdotool key super+r
 	
 		systemctl restart --user emacs.service
-		# emacsclient -ce "(load-theme 'doom-palenight t)"
 
 		notify-send "dmenutheme" "default theme loaded"
 
 		exit 0
 	else
 		echo $file
-		settheme.sh "/home/astrogoat/Pictures/wallpapers/$file.png"
+		# settheme.sh "/home/astrogoat/Pictures/wallpapers/$file.png"
+		settheme.sh $file
 		notify-send "dmenutheme" "$file theme loaded"
 	fi
 fi
