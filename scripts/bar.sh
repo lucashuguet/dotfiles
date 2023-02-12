@@ -21,7 +21,8 @@ do
         time=$(date +"%R:%S")
         day=$(date +"%a %d %b")
 
-        bar="[💻 $cpu% ] [💾 $mem Mib] [🔋 $battery ] [📅 $day] [🕐 $time ]"
+        # bar="[💻 $cpu% ] [💾 $mem Mib] [🔋 $battery ] [📅 $day] [🕐 $time ]"
+        bar="[  $cpu%] [💾 $mem Mb] [🔋 $battery] [📅 $day] [  $time]"
         xsetroot -name "$bar"
 
         sleep 1
