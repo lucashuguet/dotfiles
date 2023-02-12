@@ -115,7 +115,6 @@ alias wget='wget -c '
 alias rmpkg="sudo pacman -Rdd"
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
-alias upd='/usr/bin/update'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -152,7 +151,6 @@ alias jctl="journalctl -p 3 -xb"
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
 alias vim="nvim"
-alias fo="__fzf_open"
 
 set -Ux CARGO_HOME $HOME/.cargo
 set -Ux RUST_SRC_PATH /usr/local/src/rust/src
