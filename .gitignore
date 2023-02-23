@@ -4,4 +4,8 @@ config/qutebrowser/bookmarks/
 config/qutebrowser/greasemonkey/
 config/qutebrowser/qsettings/
 config/qutebrowser/quickmarks
+config/alacritty/colors.yml
+config/hypr/colors.conf
+config/rofi/colors.rasi
+config/waybar/colors.css
 aur/*

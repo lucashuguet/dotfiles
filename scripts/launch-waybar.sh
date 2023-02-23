@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CONFIG_FILES="$HOME/.config/waybar/config $HOME/.config/waybar/style.css"
+CONFIG_FILES="$HOME/.config/waybar/config $HOME/.config/waybar/style.css $HOME/.config/waybar/colors.css"
 
 trap "killall waybar" EXIT
 

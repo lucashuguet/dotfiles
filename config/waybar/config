@@ -1,7 +1,6 @@
 {
     "layer": "top",
     "position": "top",
-    // "mod": "dock",
     "exclusivt": true,
     "passtrough": false,
     "gtk-layer-shell": true,
@@ -52,9 +51,9 @@
               "critical": 20
          },
 
-         "format": "{icon}   {capacity}%",
-         "format-good": "{icon}   {capacity}%", 
-         "format-full": "   {capacity}%",
+         "format": "{icon} {capacity}%",
+         "format-good": "{icon} {capacity}%", 
+         "format-full": "  {capacity}%",
          "format-icons": ["", "", "", "", ""],
          "interval": 30
      },

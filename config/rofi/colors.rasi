@@ -1,8 +1,0 @@
-* {
-    red: rgba( 155 , 103 , 91 , 100%);
-    blue: rgba( 242 , 153 , 34 , 100%);
-    foreground: rgba( 244 , 231 , 167 , 100%);
-    background: rgba( 17 , 16 , 15 , 100%);
-    lightfg: rgba( 153 , 126 , 107 , 100%);
-    lightbg: rgba( 17 , 16 , 15 , 100%);
-}

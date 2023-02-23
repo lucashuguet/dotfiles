@@ -32,6 +32,8 @@ xres=~/.Xresources
 alacritty=~/dotfiles/config/alacritty/colors.yml
 hyprpaper=~/dotfiles/config/hypr/hyprpaper.conf
 rofi=~/dotfiles/config/rofi/colors.rasi
+hypr=~/dotfiles/config/hypr/colors.conf
+waybar=~/dotfiles/config/waybar/colors.css
 
 echo "dwm.normfgcolor: $foreground" | tee -a $xres
 echo "dwm.normbgcolor: $background" | tee -a $xres
@@ -131,6 +133,27 @@ echo "    background: $(getrgba.py $background);" | tee -a $rofi
 echo "    lightfg: $(getrgba.py $lbackground);" | tee -a $rofi
 echo "    lightbg: $(getrgba.py $background);" | tee -a $rofi
 echo "}" | tee -a $rofi
+
+rm $hypr
+echo "general {" | tee -a $hypr
+echo "    col.active_border = rgba(${lforeground:1}ee)" | tee -a $hypr
+echo "    col.inactive_border = rgba(${lbackground:1}ee)" | tee -a $hypr
+echo "}" | tee -a $hypr
+echo "decoration {" | tee -a $hypr
+echo "    col.shadow = rgba(${background:1}ee)" | tee -a $hypr
+echo "}" | tee -a $hypr
+
+rm $waybar
+echo "@define-color foreground $foreground;" | tee -a $waybar
+echo "@define-color background $background;" | tee -a $waybar
+echo "@define-color red $red;" | tee -a $waybar
+echo "@define-color green $green;" | tee -a $waybar
+echo "@define-color yellow $yellow;" | tee -a $waybar
+echo "@define-color blue $blue;" | tee -a $waybar
+echo "@define-color magenta $magenta;" | tee -a $waybar
+echo "@define-color cyan $cyan;" | tee -a $waybar
+echo "@define-color white $white;" | tee -a $waybar
+echo "@define-color lblack $lblack;" | tee -a $waybar
 
 xrdb $xres
 
