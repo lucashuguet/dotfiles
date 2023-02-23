@@ -1,0 +1,18 @@
+configuration {
+	modes: "window,drun,run,ssh";
+	font: "FantasqueSansMono Nerd Font Mono 16";
+	show-icons: true;
+	icon-theme: "Tela-blue-dark";
+	disable-history: true;
+	sort: true;
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+@theme "theme"

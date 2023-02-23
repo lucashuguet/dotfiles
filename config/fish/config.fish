@@ -151,11 +151,14 @@ alias jctl="journalctl -p 3 -xb"
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
 alias vim="nvim"
+alias condaenv="eval /opt/anaconda/bin/conda 'shell.fish' 'hook' $argv | source"
 
 set -Ux CARGO_HOME $HOME/.cargo
 set -Ux RUST_SRC_PATH /usr/local/src/rust/src
 set -U fish_user_paths $CARGO_HOME/bin $fish_user_paths
 set -U fish_user_paths $HOME/.local/share/bin $fish_user_paths
+
+bind \co fzfo.sh
 
 # Load node
 # load_nvm > /dev/stderr
