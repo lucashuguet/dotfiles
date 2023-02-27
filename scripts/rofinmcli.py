@@ -11,6 +11,7 @@ knowned_net = []
 for line in lines:
     knowned_net.append(line.strip())
 
+subprocess.run(["nmcli", "d", "wifi", "rescan"])
 output = subprocess.check_output(["nmcli", "-f", "SSID,IN-USE", "d", "wifi", "list"]).decode("utf-8")
 
 lines = output.strip().split("\n")[1:]
