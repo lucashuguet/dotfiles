@@ -25,10 +25,8 @@ mesa-utils
 mpv
 neofetch
 neovim
-nerd-fonts-fantasque-sans-mono
 networkmanager
 network-manager-applet
-nitrogen
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
@@ -40,7 +38,7 @@ nwg-launchers
 p7zip
 pasystray
 pavucontrol
-pcmanfm
+pcmanfm-qt
 picom
 pipewire
 pipewire-alsa
@@ -52,7 +50,6 @@ python-pip
 python-psutil
 qtile
 qutebrowser
-ranger
 reflector
 ripgrep
 sddm
@@ -60,6 +57,7 @@ starship
 sweet-cursors-theme-git
 sweet-dark-theme
 tela-icon-theme
+ttf-fantasque-nerd
 xarchiver
 xorg
 xorg-xinit
