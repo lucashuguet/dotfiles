@@ -4,9 +4,6 @@ source ~/.cache/wal/colors.sh
 
 feh --bg-fill $wallpaper
 
-rm ~/.Xresources
-xrdb -remove
-
 black=$color0
 red=$color1
 green=$color2
@@ -30,10 +27,14 @@ lbackground=$color2
 
 xres=~/.Xresources
 alacritty=~/dotfiles/config/alacritty/colors.yml
+qute=~/dotfiles/config/qutebrowser/colors.yml
 hyprpaper=~/dotfiles/config/hypr/hyprpaper.conf
 rofi=~/dotfiles/config/rofi/colors.rasi
 hypr=~/dotfiles/config/hypr/colors.conf
 waybar=~/dotfiles/config/waybar/colors.css
+
+rm $xres
+xrdb -remove
 
 echo "dwm.normfgcolor: $foreground" | tee -a $xres
 echo "dwm.normbgcolor: $background" | tee -a $xres
@@ -91,11 +92,6 @@ echo "emacs*color15: $(getlightcolor.py $color7)"  | tee -a $xres
 echo "Sxiv.background: $background" | tee -a $xres
 echo "Sxiv.foreground: $foreground" | tee -a $xres
 
-echo "qutebrowser.background: $background" | tee -a $xres
-echo "qutebrowser.foreground: $foreground" | tee -a $xres
-echo "qutebrowser.color8: $color8" | tee -a $xres
-echo "qutebrowser.color14: $color14" | tee -a $xres
-
 rm $alacritty
 echo "colors:" | tee -a $alacritty
 echo "  primary:" | tee -a $alacritty
@@ -119,6 +115,9 @@ echo "    blue: '$lblue'" | tee -a $alacritty
 echo "    magenta: '$lmagenta'" | tee -a $alacritty
 echo "    cyan: '$lcyan'" | tee -a $alacritty
 echo "    white: '$lwhite'" | tee -a $alacritty
+
+rm $qute
+cp $alacritty $qute
 
 rm $hyprpaper
 echo "preload = $1" | tee -a $hyprpaper
