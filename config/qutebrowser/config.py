@@ -20,7 +20,7 @@ c.downloads.location.prompt = False
 c.downloads.position = "bottom"
 c.downloads.remove_finished = 200
 
-c.editor.command = ["emacsclient", "'{}'"]
+c.editor.command = ["emacsclient", "-c", "'{}'"]
 
 config.unbind("ZZ")
 config.unbind("ZQ")
@@ -30,6 +30,7 @@ config.bind("x", "hint links spawn mpv '{hint-url}'")
 config.bind("X", "hint links spawn playbox -p '{hint-url}'")
 config.bind("z", "hint links spawn addstr.sh '{hint-url}'")
 config.bind("Z", "spawn --userscript savebox")
+config.bind("e", "spawn --userscript playanim")
 
 config.bind("<Ctrl-a>", "fake-key <Home>", "insert")
 config.bind("<Ctrl-e>", "fake-key <End>", "insert")

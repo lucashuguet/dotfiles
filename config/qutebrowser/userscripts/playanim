@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+from qutescript import userscript
+from bs4 import BeautifulSoup
+import subprocess
+
+@userscript
+def main(request):
+    with open(request.html, "r") as f:
+        content = f.read()
+        soup = BeautifulSoup(content, "html.parser")
+
+        result = soup.find("iframe", {"id": "playerDF"})
+        if result == None:
+            request.send_command("message-error 'No player found'")
+            exit(0)
+
+        anim = result["src"]
+        
+        request.send_command("message-info 'Playing " + anim + "'")
+        subprocess.run(["mpv", anim])
+
+if __name__ == '__main__':
+    main()
