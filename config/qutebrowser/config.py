@@ -1,4 +1,6 @@
-import subprocess
+import os
+import yaml
+from yaml.loader import SafeLoader
 
 config.load_autoconfig()
 # c.colors.webpage.darkmode.enabled = False
@@ -30,45 +32,34 @@ config.bind("Z", "spawn --userscript savebox")
 config.bind("<Ctrl-a>", "fake-key <Home>", "insert")
 config.bind("<Ctrl-e>", "fake-key <End>", "insert")
 
-def read_xresources(prefix):
-    """
-    read settings from xresources
-    """
-    props = {}
-    x = subprocess.run(["xrdb", "-query"], stdout=subprocess.PIPE)
-    lines = x.stdout.decode().split("\n")
-    for line in filter(lambda l: l.startswith(prefix), lines):
-        prop, _, value = line.partition(":\t")
-        props[prop] = value
-    return props
+with open(os.path.expanduser("~/.config/qutebrowser/colors.yml")) as f:
+    colors = yaml.load(f, Loader=SafeLoader)
 
+    c.colors.statusbar.normal.bg = colors["colors"]["primary"]["background"]
+    c.colors.statusbar.command.bg = colors["colors"]["primary"]["background"]
+    c.colors.statusbar.normal.fg = colors["colors"]["primary"]["foreground"]
+    c.colors.statusbar.command.fg = colors["colors"]["primary"]["foreground"]
+    
+    c.colors.tabs.even.bg = colors["colors"]["primary"]["background"]
+    c.colors.tabs.odd.bg = colors["colors"]["primary"]["background"]
+    c.colors.tabs.even.fg = colors["colors"]["primary"]["foreground"]
+    c.colors.tabs.odd.fg = colors["colors"]["primary"]["foreground"]
+    c.colors.tabs.selected.even.bg = colors["colors"]["bright"]["black"]
+    c.colors.tabs.selected.odd.bg = colors["colors"]["bright"]["black"]
+    c.colors.tabs.indicator.stop = colors["colors"]["normal"]["cyan"]
+    
+    c.colors.completion.even.bg = colors["colors"]["primary"]["background"]
+    c.colors.completion.odd.bg = colors["colors"]["primary"]["background"]
+    c.colors.completion.odd.bg = colors["colors"]["primary"]["background"]
+    c.colors.completion.fg = colors["colors"]["primary"]["foreground"]
+    c.colors.completion.category.bg = colors["colors"]["primary"]["background"]
+    c.colors.completion.category.fg = colors["colors"]["primary"]["foreground"]
+    c.colors.completion.item.selected.bg = colors["colors"]["primary"]["background"]
+    c.colors.completion.item.selected.fg = colors["colors"]["primary"]["foreground"]
+    
+    c.colors.hints.bg = colors["colors"]["primary"]["background"]
+    c.colors.hints.fg = colors["colors"]["primary"]["foreground"]
 
-xresources = read_xresources("qutebrowser")
-
-c.colors.statusbar.normal.bg = xresources["qutebrowser.background"]
-c.colors.statusbar.command.bg = xresources["qutebrowser.background"]
-c.colors.statusbar.normal.fg = xresources["qutebrowser.foreground"]
-c.colors.statusbar.command.fg = xresources["qutebrowser.foreground"]
 c.statusbar.show = "always"
-
-c.colors.tabs.even.bg = xresources["qutebrowser.background"]
-c.colors.tabs.odd.bg = xresources["qutebrowser.background"]
-c.colors.tabs.even.fg = xresources["qutebrowser.foreground"]
-c.colors.tabs.odd.fg = xresources["qutebrowser.foreground"]
-c.colors.tabs.selected.even.bg = xresources["qutebrowser.color8"]
-c.colors.tabs.selected.odd.bg = xresources["qutebrowser.color8"]
-c.colors.tabs.indicator.stop = xresources["qutebrowser.color14"]
-
-c.colors.completion.even.bg = xresources["qutebrowser.background"]
-c.colors.completion.odd.bg = xresources["qutebrowser.background"]
-c.colors.completion.odd.bg = xresources["qutebrowser.background"]
-c.colors.completion.fg = xresources["qutebrowser.foreground"]
-c.colors.completion.category.bg = xresources["qutebrowser.background"]
-c.colors.completion.category.fg = xresources["qutebrowser.foreground"]
-c.colors.completion.item.selected.bg = xresources["qutebrowser.background"]
-c.colors.completion.item.selected.fg = xresources["qutebrowser.foreground"]
-c.completion.height = "15%"
-
-c.colors.hints.bg = xresources["qutebrowser.background"]
-c.colors.hints.fg = xresources["qutebrowser.foreground"]
 c.hints.border = "1px solid #ffffff"
+c.completion.height = "15%"
