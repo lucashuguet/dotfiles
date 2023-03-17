@@ -22,7 +22,7 @@ c.downloads.remove_finished = 200
 
 c.editor.command = ["emacsclient", "-c", "'{}'"]
 
-c.content.cookies.accept = "no-3rdparty"
+# c.content.cookies.accept = "no-3rdparty"
 c.completion.web_history.max_items = 0
 c.content.autoplay = False
 
