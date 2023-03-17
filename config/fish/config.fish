@@ -36,7 +36,7 @@ end
 ## Starship prompt
 if not status --is-login
    if status --is-interactive
-      source ("/usr/bin/starship" init fish --print-full-init | psub)
+      source ("starship" init fish --print-full-init | psub)
    end
 end
 
