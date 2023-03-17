@@ -10,4 +10,5 @@ config/hypr/colors.conf
 config/hypr/hyprpaper.conf
 config/rofi/colors.rasi
 config/waybar/colors.css
+config/dunst/colors
 aur/*
