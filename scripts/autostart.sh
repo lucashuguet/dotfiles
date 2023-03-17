@@ -5,7 +5,7 @@ pipewire &
 pipewire-pulse &
 wireplumber &
 picom --config ~/.config/picom/picom-blur.conf &
-dunst &
+launch-dunst.sh &
 flameshot &
 nm-applet &
 pasystray &

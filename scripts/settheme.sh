@@ -32,6 +32,7 @@ hyprpaper=~/dotfiles/config/hypr/hyprpaper.conf
 rofi=~/dotfiles/config/rofi/colors.rasi
 hypr=~/dotfiles/config/hypr/colors.conf
 waybar=~/dotfiles/config/waybar/colors.css
+dunst=~/dotfiles/config/dunst/colors
 
 rm $xres
 xrdb -remove
@@ -153,6 +154,13 @@ echo "@define-color magenta $magenta;" | tee -a $waybar
 echo "@define-color cyan $cyan;" | tee -a $waybar
 echo "@define-color white $white;" | tee -a $waybar
 echo "@define-color lblack $lblack;" | tee -a $waybar
+
+rm $dunst
+echo "[global]" | tee -a $dunst
+echo "    frame_color = \"$lforeground\"" | tee -a $dunst
+echo "[urgency_normal]" | tee -a $dunst
+echo "    background = \"$background\"" | tee -a $dunst
+echo "    foreground = \"$foreground\"" | tee -a $dunst
 
 xrdb $xres
 
