@@ -166,5 +166,3 @@ xrdb $xres
 
 kill -9 $(top -bcn 1 | grep autostart.sh | sed 1q | awk '{print $1}')
 xdotool key super+r
-
-systemctl restart --user emacs.service
