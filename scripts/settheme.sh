@@ -33,6 +33,8 @@ rofi=~/dotfiles/config/rofi/colors.rasi
 hypr=~/dotfiles/config/hypr/colors.conf
 waybar=~/dotfiles/config/waybar/colors.css
 dunst=~/dotfiles/config/dunst/colors
+dunstc=~/dotfiles/config/dunst/config
+dunstrc=~/dotfiles/config/dunst/dunstrc
 
 rm $xres
 xrdb -remove
@@ -161,6 +163,11 @@ echo "    frame_color = \"$lforeground\"" | tee -a $dunst
 echo "[urgency_normal]" | tee -a $dunst
 echo "    background = \"$background\"" | tee -a $dunst
 echo "    foreground = \"$foreground\"" | tee -a $dunst
+
+rm $dunstrc
+cat $dunst | tee -a $dunstrc
+cat $dunstc | tee -a $dunstrc
+killall dunst
 
 xrdb $xres
 

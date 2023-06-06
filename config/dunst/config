@@ -1,9 +1,4 @@
 [global]
-    frame_color = "#f1e8cc"
-[urgency_normal]
-    background = "#1e1636"
-    foreground = "#f1e8cc"
-[global]
     monitor = 0
 
     width = 300
