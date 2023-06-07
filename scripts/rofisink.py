@@ -32,6 +32,7 @@ if not "current" in selected_description:
 
     if selected_sink:
         sink = selected_sink["name"]
+        subprocess.run(["mpc", "pause"])
         subprocess.run(["pactl", "set-default-sink", sink])
 
         subprocess.run(["notify-send", "rofisink.py", "sink changed"])

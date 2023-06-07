@@ -1,8 +1,8 @@
 [global]
-    frame_color = "#f1e8cc"
+    frame_color = "#eadcc9"
 [urgency_normal]
-    background = "#1e1636"
-    foreground = "#f1e8cc"
+    background = "#0C0B0B"
+    foreground = "#eadcc9"
 [global]
     monitor = 0
 
