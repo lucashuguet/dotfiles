@@ -12,5 +12,6 @@ config/hypr/hyprpaper.conf
 config/rofi/colors.rasi
 config/waybar/colors.css
 config/dunst/colors
+config/dunst/dunstrc
 config/gtk-3.0/bookmarks
 aur/*
