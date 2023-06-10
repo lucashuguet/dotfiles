@@ -50,4 +50,11 @@ if not "connected" in selected:
             subprocess.run(["alacritty", "--class", "nmcli", "-e", "nmcli", "--ask", "d", "wifi", "connect", selected])
     else:
         subprocess.run(["alacritty", "--class", "nmcli", "-e", "nmcli", "--ask", "d", "wifi", "connect", selected])
-        
+
+else:
+    selected = selected.replace(" (connected)", "")
+    process = subprocess.run(["nmcli", "c", "down", selected])
+    if process.returncode == 0:
+        subprocess.run(["notify-send", "rofinmcli.py", "Succesfully disconnected from " + selected])
+    if process.returncode == 4:
+        subprocess.run(["notify-send", "rofinmcli.py", "Failed to disconnect from " + selected])
