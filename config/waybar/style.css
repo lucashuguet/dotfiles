@@ -19,11 +19,12 @@ window#waybar {
     margin-right: 5px;
 }
 
-#workspaces button.active {
-    color: @foreground;
-}
+/* workspaces button.active { */
+/*     color: @foreground; */
+/* } */
 
-#workspaces button.focused {
+/* #workspaces button.focused { */
+#workspaces button.active {
     color: @foreground;
     background: @background;
     border-radius: 10px;
