@@ -10,9 +10,9 @@ disks = []
 
 for blockdevice in lsblk["blockdevices"]:
     for d in blockdevice["children"]:
-        if d["fstype"] is not None: # d["mountpoint"] is None and 
-            if "nvme0n1p" not in d["name"]:
-                disks.append([d["name"], d["fstype"], d["label"], d["mountpoint"] is not None, d["size"]])
+        # if d["fstype"] is not None: # d["mountpoint"] is None and 
+        if "nvme" not in d["name"]:
+            disks.append([d["name"], d["fstype"], d["label"], d["mountpoint"] is not None, d["size"]])
 
 if len(disks) == 0:
     subprocess.run(["notify-send", "rofidrives.py", "no drives found"])
