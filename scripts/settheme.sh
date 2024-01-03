@@ -26,7 +26,7 @@ lforeground=$white
 lbackground=$color2
 
 xres=~/.Xresources
-alacritty=~/dotfiles/config/alacritty/colors.yml
+alacritty=~/dotfiles/config/alacritty/colors.toml
 qute=~/dotfiles/config/qutebrowser/colors.yml
 hyprpaper=~/dotfiles/config/hypr/hyprpaper.conf
 rofi=~/dotfiles/config/rofi/colors.rasi
@@ -96,28 +96,27 @@ echo "Sxiv.background: $background" | tee -a $xres
 echo "Sxiv.foreground: $foreground" | tee -a $xres
 
 rm $alacritty
-echo "colors:" | tee -a $alacritty
-echo "  primary:" | tee -a $alacritty
-echo "    background: '$background'" | tee -a $alacritty
-echo "    foreground: '$foreground'" | tee -a $alacritty
-echo "  normal:" | tee -a $alacritty
-echo "    black: '$black'" | tee -a $alacritty
-echo "    red: '$red'" | tee -a $alacritty
-echo "    green: '$green'" | tee -a $alacritty
-echo "    yellow: '$yellow'" | tee -a $alacritty
-echo "    blue: '$blue'" | tee -a $alacritty
-echo "    magenta: '$magenta'" | tee -a $alacritty
-echo "    cyan: '$cyan'" | tee -a $alacritty
-echo "    white: '$white'" | tee -a $alacritty
-echo "  bright:" | tee -a $alacritty
-echo "    black: '$lblack'" | tee -a $alacritty
-echo "    red: '$lred'" | tee -a $alacritty
-echo "    green: '$lgreen'" | tee -a $alacritty
-echo "    yellow: '$lyellow'" | tee -a $alacritty
-echo "    blue: '$lblue'" | tee -a $alacritty
-echo "    magenta: '$lmagenta'" | tee -a $alacritty
-echo "    cyan: '$lcyan'" | tee -a $alacritty
-echo "    white: '$lwhite'" | tee -a $alacritty
+echo "[colors.primary]" | tee -a $alacritty
+echo "background = '$background'" | tee -a $alacritty
+echo "foreground = '$foreground'" | tee -a $alacritty
+echo "[colors.normal]" | tee -a $alacritty
+echo "black = '$black'" | tee -a $alacritty
+echo "red = '$red'" | tee -a $alacritty
+echo "green = '$green'" | tee -a $alacritty
+echo "yellow = '$yellow'" | tee -a $alacritty
+echo "blue = '$blue'" | tee -a $alacritty
+echo "magenta = '$magenta'" | tee -a $alacritty
+echo "cyan = '$cyan'" | tee -a $alacritty
+echo "white = '$white'" | tee -a $alacritty
+echo "[colors.bright]" | tee -a $alacritty
+echo "black = '$lblack'" | tee -a $alacritty
+echo "red = '$lred'" | tee -a $alacritty
+echo "green = '$lgreen'" | tee -a $alacritty
+echo "yellow = '$lyellow'" | tee -a $alacritty
+echo "blue = '$lblue'" | tee -a $alacritty
+echo "magenta = '$lmagenta'" | tee -a $alacritty
+echo "cyan = '$lcyan'" | tee -a $alacritty
+echo "white = '$lwhite'" | tee -a $alacritty
 
 rm $qute
 cp $alacritty $qute
