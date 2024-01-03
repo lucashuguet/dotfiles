@@ -119,7 +119,28 @@ echo "cyan = '$lcyan'" | tee -a $alacritty
 echo "white = '$lwhite'" | tee -a $alacritty
 
 rm $qute
-cp $alacritty $qute
+echo "colors:" | tee -a $qute
+echo "  primary:" | tee -a $qute
+echo "    background: '$background'" | tee -a $qute
+echo "    foreground: '$foreground'" | tee -a $qute
+echo "  normal:" | tee -a $qute
+echo "    black: '$black'" | tee -a $qute
+echo "    red: '$red'" | tee -a $qute
+echo "    green: '$green'" | tee -a $qute
+echo "    yellow: '$yellow'" | tee -a $qute
+echo "    blue: '$blue'" | tee -a $qute
+echo "    magenta: '$magenta'" | tee -a $qute
+echo "    cyan: '$cyan'" | tee -a $qute
+echo "    white: '$white'" | tee -a $qute
+echo "  bright:" | tee -a $qute
+echo "    black: '$lblack'" | tee -a $qute
+echo "    red: '$lred'" | tee -a $qute
+echo "    green: '$lgreen'" | tee -a $qute
+echo "    yellow: '$lyellow'" | tee -a $qute
+echo "    blue: '$lblue'" | tee -a $qute
+echo "    magenta: '$lmagenta'" | tee -a $qute
+echo "    cyan: '$lcyan'" | tee -a $qute
+echo "    white: '$lwhite'" | tee -a $qute
 
 rm $hyprpaper
 echo "preload = $1" | tee -a $hyprpaper

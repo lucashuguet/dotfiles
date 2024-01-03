@@ -6,7 +6,7 @@ config/qutebrowser/qsettings/
 config/qutebrowser/quickmarks
 config/qutebrowser/colors.yml
 config/qutebrowser/autoconfig.yml
-config/alacritty/colors.yml
+config/alacritty/colors.toml
 config/hypr/colors.conf
 config/hypr/hyprpaper.conf
 config/rofi/colors.rasi
